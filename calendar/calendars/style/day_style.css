@@ -1,0 +1,346 @@
+<style>
+{/*style for day_view page*/}
+	html{
+		font-family: Segoe UI;
+	}
+
+	@keyframes zoom {
+    	from {transform: scale(0)} 
+    	to {transform: scale(1)}
+	}
+
+	.bg{
+		background-color: rgba(85,255,170,0.7);
+	}
+
+	.day{
+		position:relative; 
+		margin: 0 auto; top: 3%;
+		width: 88.5%;
+		height: 4.5%;
+		background-color: rgba(85,255,170,1);
+		border-radius: 10px;
+	}
+
+	.link{ text-decoration: none; }
+	a:link { color: black; }
+	a:visited { color: black; }	
+	a:hover { color: blue; }
+	a:active { color: blue; }
+
+	.titleBar{
+		position: fixed; 
+		margin: 0 auto;
+		left: 0; top: 0;
+		width: 100%;
+		height: 3.5%;
+		background: #5efb6E;
+		background-color: rgba(255,255,255,0.8);
+		padding: 0.7% 1% 1% 1%;
+		z-index: 2;
+	}
+
+	.btnWeek{
+		position: relative;
+	    margin-top: -0.25%;
+	    left: 6.2%;
+	    float: left;
+	    padding: 5px 5px;
+	    background-color: #00FA9A;
+	    border: 3px solid #00FA9A;
+	    text-align: center;
+	    color: white;
+	    font-size: 1.2vw;
+	    font-weight: bold;
+	    width: 7%;
+	    cursor: pointer;
+	}
+
+	.btnWeek:hover {
+		transform: scale(1.04);
+	}
+
+	.btnMonth{
+		position: relative;
+	    margin-top: -0.25%;
+	    left: 7%;
+	    float: left;
+	    padding: 5px 5px;
+	    background-color: #00FA9A;
+	    border: 3px solid #00FA9A;
+	    text-align: center;
+	    color: white;
+	    font-size: 1.2vw;
+	    font-weight: bold;
+	    width: 8%;
+	    cursor: pointer;
+	}
+
+	.btnMonth:hover {
+		transform: scale(1.04);
+	}
+
+	.btnGoto{
+		position: relative;
+	    margin-top: -0.25%;
+	    right: 16.5%;
+	    float: right;
+	    padding: 5px 5px;
+	    background-color: #00FA9A;
+	    border: 3px solid #00FA9A;
+	    text-align: center;
+	    color: white;
+	    font-size: 1.2vw;
+	    font-weight: bold;
+	    width: 7%;
+	    cursor: pointer;
+	}
+
+	.btnGoto:hover {
+		transform: scale(1.04);
+	}
+
+	#gotoForm{
+		position: fixed;
+	    float: right;
+	    margin-top: 3.5%;
+	    right: 7.3%;
+	    width: 20%;
+	    height: 15%;
+	    padding: 10px 0 0 0;
+	    background-color: rgb(121,204,163);
+	    border-radius: 15px;
+	    text-align: center;
+	    animation: zoom 0.3s;
+	    z-index: 1;
+	}
+
+	#btnGo{
+		position: relative;
+		margin: auto;
+		margin-top: 5%;
+		padding: 5px 5px;
+		background-color: #00FA9A; 
+		border: 3px solid #00FA9A;	   	
+	  	text-align: center;
+	  	color: white;		   	   
+	   	font-size: 1.2vw; 
+	   	font-weight: bold;	
+	   	width: 85%;	 
+	   	cursor: pointer; 
+	}
+
+	#btnGo:hover {
+		transform: scale(1.04);
+	}
+
+	.btnToday{
+		position: relative;
+	    margin-top: -0.25%;
+	    right: 1.5%;
+	    float: right;
+	    padding: 5px 5px;
+	    background-color: #00FA9A;
+	    border: 3px solid #00FA9A;
+	    text-align: center;
+	    color: white;
+	    font-size: 1.2vw;
+	    font-weight: bold;
+	    width: 7%;
+	    cursor: pointer;
+	}
+
+	.btnToday:hover {
+		transform: scale(1.04);
+	}
+
+	#logOut{
+		position: relative;
+	    right: -11%;
+	    float: right;
+		font-size: 1.2vw;
+	}
+
+	.view{
+		position: fixed;
+	    margin: -0.95% 27%;
+	    font-size: 2.5vw;
+	    opacity: 0.4;
+	    font-weight: bold;
+	}
+
+	.date{
+		position: absolute;
+	    margin-top: 2.9%;
+	    left: 0%;
+	    font-size: 0vw;
+	}
+
+	.show_date{
+		position: absolute;
+	    margin-top: 5%;
+	    left: 0%;
+	    font-size: 2.5vw;
+	    opacity: 0.6;
+	    font-weight: bold;
+	    width: 99.85%;
+	    text-align: center;
+	}
+
+	#up{
+		margin-top: -5%;
+	}
+
+	.nextDay{
+		position: absolute; 
+		top: 19%; left: 48%;
+		width: 3%; height: 3%;
+		background-color: #2FF3F6;
+		border-radius: 10%;
+		font-size: 1.5vw;
+		text-align: center;
+		cursor: pointer;
+	}
+
+	#upsideDown{
+		transform: rotate(180deg);
+		margin-top: -37%;
+	}	
+
+	.prevDay{
+		position: absolute; 
+		top: 8.5%; left: 48%;
+		width: 3%; height: 3%;
+		background-color: #2FF3F6;
+		border-radius: 10%;
+		font-size: 1.5vw;
+		text-align: center;
+		cursor: pointer;
+	}
+
+	.time{
+		float: left;
+		margin-top: 12%;
+	}
+
+	.hour{
+		position: relative;
+		width: 100px; height: 44px;
+		background-color: #FF6F50;
+		text-align: center;
+		z-index: 1;
+	}
+
+	.line{
+		position: absolute;
+		border: 0.5px solid black;
+		width: 99.3%;
+	}
+
+	.btnAddApp{
+		width: 45px;
+	    height: 45px;
+	    border-radius: 50%;
+	    border: none;
+	    z-index: 10;
+	    position: fixed;
+	    background: #FF4118;
+	    cursor: pointer;
+	    text-align: center;
+	    font-size: 2.5vw;
+	    padding: 1px 7px 12px 7px;
+	    float: right;
+	    right: 1.5%;
+	    top: 10%;
+	    color: white;
+	}
+
+	.btnAddApp:hover {
+		transform: scale(1.02);
+		box-shadow: 6px 7px 2px #ACAAAA;
+	}
+
+	.addAppointment{	
+		display: none;
+		position: fixed;
+	    float: right;
+	    margin-top: 5.5%;
+	    right: 4.5%;
+	    width: 20%;
+	    height: 42%;
+	    background-color: rgb(121,204,163);
+	    border-radius: 15px;
+	    text-align: center;
+	    z-index: 9;
+	}
+
+	#addApp{
+		position: relative;
+		margin: auto;
+		font-size: 2vw;
+		color: white;
+	}
+
+	.addApp-content{
+		margin-top: 6%; 
+	}
+
+	input[type=text],input[type=date],input[type=time]{
+	    width: 60%;
+	    padding: 1% 5px;
+	    margin: 0.5% 5%;
+	    border: 1px solid #ccc;
+	    border-radius: 5px;
+	    box-sizing: border-box;
+		font-size:16px;
+	}
+
+	.btnAdd{
+		position: relative;
+		margin: auto;
+		margin-top: 5%;
+		padding: 5px 5px;
+		background-color: #00FA9A; 
+		border: 3px solid #00FA9A;	   	
+	  	text-align: center;
+	  	color: white;		   	   
+	   	font-size: 1.2vw; 
+	   	font-weight: bold;	
+	   	width: 90%;	 
+	   	cursor: pointer; 
+	}
+
+	.btnAdd:hover {
+		transform: scale(1.04);
+	}
+
+	.detail-animate {
+   		animation: zoom 0.4s
+	}
+
+	.detail{
+		display: none;
+	    position: fixed;
+	    z-index: 10;
+	    left: 0;
+	    top: 0;
+	    width: 100%;
+	    height: 100%;
+	    overflow: auto;
+	    background-color: rgba(0,0,0,0.4);
+	}
+
+	.detail-content{
+		background-color: #fefefe;
+	    margin: 10% auto 0 auto;
+	    border: 1px solid #888;
+	    width: 40%;
+	    height: 51%;
+	    padding-bottom: 30px;
+	}
+
+	.appointment{
+		float: left;
+		border: 1px solid red;
+	}
+</style>

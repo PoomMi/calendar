@@ -1,0 +1,429 @@
+<style>
+{/*style for month_view page*/}
+	html{
+		font-family: Segoe UI;
+	}
+
+	@keyframes zoom {
+    	from {transform: scale(0)} 
+    	to {transform: scale(1)}
+	}
+
+	.bg{
+		background-color: rgba(85,255,170,0.7);
+	}
+
+	.btnAddApp{
+		width: 45px;
+	    height: 45px;
+	    border-radius: 50%;
+	    border: none;
+	    z-index: 10;
+	    position: fixed;
+	    background: #FF4118;
+	    cursor: pointer;
+	    text-align: center;
+	    font-size: 2.5vw;
+	    padding: 1px 7px 12px 7px;
+	    float: right;
+	    right: 1%;
+	    top: 10%;
+	    color: white;
+	}
+
+	.btnAddApp:hover {
+		transform: scale(1.02);
+		box-shadow: 6px 7px 2px #ACAAAA;
+	}
+
+	.addAppointment{	
+		display: none;
+		position: fixed;
+	    float: right;
+	    margin-top: 6.5%;
+	    right: 3.5%;
+	    width: 19%;
+	    height: 42%;
+	    background-color: rgba(65,0,35,0.2);
+	    border-radius: 15px;
+	    text-align: center;
+	    z-index: 9;
+	}
+
+	#addApp{
+		position: relative;
+		margin: auto;
+		font-size: 2vw;
+		color: white;
+	}
+
+	.addApp-content{
+		margin-top: 6%; 
+	}
+
+	.detail-animate {
+   		animation: zoom 0.4s
+	}
+
+	.detail{
+		display: none;
+	    position: fixed;
+	    z-index: 10;
+	    left: 0;
+	    top: 0;
+	    width: 100%;
+	    height: 100%;
+	    overflow: auto;
+	    background-color: rgba(0,0,0,0.4);
+	}
+
+	.detail-content{
+		background-color: #fefefe;
+	    margin: 10% auto 15% auto;
+	    border: 1px solid #888;
+	    width: 40%;
+	    height: 51%;
+	    padding-bottom: 30px;
+	}
+
+	.app-detail:hover {
+		cursor: pointer;
+		transform: scale(1.04);
+	}
+
+	input[type=text],input[type=date],input[type=time]{
+	    width: 60%;
+	    padding: 1% 5px;
+	    margin: 0.5% 5%;
+	    border: 1px solid #ccc;
+	    border-radius: 5px;
+	    box-sizing: border-box;
+		font-size:16px;
+	}
+
+	.btnAdd{
+		position: relative;
+		margin: auto;
+		margin-top: 5%;
+		padding: 5px 5px;
+		background-color: #00FA9A; 
+		border: 3px solid #00FA9A;	   	
+	  	text-align: center;
+	  	color: white;		   	   
+	   	font-size: 1.2vw; 
+	   	font-weight: bold;	
+	   	width: 90%;	 
+	   	cursor: pointer; 
+	}
+
+	.btnAdd:hover {
+		transform: scale(1.04);
+	}
+
+	.animate_calendar{
+		animation: zoom 1s
+	}
+
+	.calendar{
+		position: relative;
+		margin: 0.5% auto;
+		width: 53%;
+		height: 100%;
+		background-color: #40B4FF;
+		border-radius: 15px; 
+		z-index: 1;
+	}
+	.box{
+		position:relative; left: 42px; top:30px;
+		width: 720px;
+	}
+	div.date, div.days{
+		width: 85px;
+		border: 1px solid black;
+		border-radius: 3px; 
+		float: left;
+		margin: 0.25%;
+		font-style: border;
+	}
+	
+	.blankday{
+		background:#ccc;
+	}
+	div.date{
+		height: 85px;
+		cursor: pointer;
+	}
+
+	div.date:hover {
+	    transform: scale(1.02);
+	}
+
+	.today{
+		background: yellow;
+	}
+
+	.blank{
+		background: white;
+	}
+
+	.month{
+		position:relative; 
+		margin: 0 auto; top: 3%;
+		width: 88.5%;
+		height: 4.5%;
+		background-color: rgba(85,255,170,1);
+		border-radius: 10px;
+	}
+
+	.nextMonth{
+		position: absolute; 
+		top: -3%; left: 86%;
+	}
+
+	.nextMonth:hover {
+		transform: scale(1.04);
+	}
+
+	.prevMonth{
+		position: absolute; 
+		top: -3%;
+	}
+
+	.prevmonth:hover {
+		transform: scale(1.04);
+	}
+
+	.nameMonth{
+		position: relative;
+		top: -3px;
+		font-weight: bold;
+		text-shadow: 2px 2px 5px green;
+		font-size: 1.8vw;
+	}
+
+	.link{ text-decoration: none; }
+	a:link { color: black; }
+	a:visited { color: black; }	
+	a:hover { color: blue; }
+	a:active { color: blue; }
+
+	.titleBar{
+		position: fixed; 
+		margin: 0 auto;
+		left: 0; top: 0;
+		width: 100%;
+		height: 3.5%;
+		background: #5efb6E;
+		background-color: rgba(255,255,255,0.8);
+		padding: 0.7% 1% 1% 1%;
+		z-index: 0;
+	}
+
+	.appointment{
+		position: fixed;
+	    float: left;
+	    margin-top: 4.5%;
+	    left: 1.3%;
+	    width: 20%;
+	    height: 87%;
+	    background-color: rgba(65,0,35,0.2);
+	    border-radius: 15px;
+	    text-align: center;
+	}
+
+	#app{
+		position: relative;
+		margin: auto;
+		font-size: 2vw;
+		color: white;
+	}
+
+	#app-content{	
+		display: none;
+		margin-top: 6%; 
+	}
+
+	.btnDay{
+		position: relative;
+	    margin-top: -0.25%;
+	    left: 6.2%;
+	    float: left;
+	    padding: 5px 5px;
+	    background-color: #00FA9A;
+	    border: 3px solid #00FA9A;
+	    text-align: center;
+	    color: white;
+	    font-size: 1.2vw;
+	    font-weight: bold;
+	    width: 7%;
+	    cursor: pointer;
+	}
+
+	.btnDay:hover {
+		transform: scale(1.04);
+	}
+
+	.btnWeek{
+		position: relative;
+	    margin-top: -0.25%;
+	    left: 7%;
+	    float: left;
+	    padding: 5px 5px;
+	    background-color: #00FA9A;
+	    border: 3px solid #00FA9A;
+	    text-align: center;
+	    color: white;
+	    font-size: 1.2vw;
+	    font-weight: bold;
+	    width: 8%;
+	    cursor: pointer;
+	}
+
+	.btnWeek:hover {
+		transform: scale(1.04);
+	}
+
+	.btnGoto{
+		position: relative;
+	    margin-top: -0.25%;
+	    right: 16.5%;
+	    float: right;
+	    padding: 5px 5px;
+	    background-color: #00FA9A;
+	    border: 3px solid #00FA9A;
+	    text-align: center;
+	    color: white;
+	    font-size: 1.2vw;
+	    font-weight: bold;
+	    width: 7%;
+	    cursor: pointer;
+	}
+
+	.btnGoto:hover {
+		transform: scale(1.04);
+	}
+
+	#gotoForm{
+		position: fixed;
+	    float: right;
+	    margin-top: 4%;
+	    right: 2.3%;
+	    width: 20%;
+	    height: 15%;
+	    padding: 10px 0 0 0;
+	    background-color: rgba(65,0,35,0.2);
+	    border-radius: 15px;
+	    text-align: center;
+	    animation: zoom 0.3s;
+	}
+
+	#btnGo{
+		position: relative;
+		margin: auto;
+		margin-top: 5%;
+		padding: 5px 5px;
+		background-color: #00FA9A; 
+		border: 3px solid #00FA9A;	   	
+	  	text-align: center;
+	  	color: white;		   	   
+	   	font-size: 1.2vw; 
+	   	font-weight: bold;	
+	   	width: 85%;	 
+	   	cursor: pointer; 
+	}
+
+	#btnGo:hover {
+		transform: scale(1.04);
+	}
+
+	.btnToday{
+		position: relative;
+	    margin-top: -0.25%;
+	    right: 1.5%;
+	    float: right;
+	    padding: 5px 5px;
+	    background-color: #00FA9A;
+	    border: 3px solid #00FA9A;
+	    text-align: center;
+	    color: white;
+	    font-size: 1.2vw;
+	    font-weight: bold;
+	    width: 7%;
+	    cursor: pointer;
+	}
+
+	.btnToday:hover {
+		transform: scale(1.04);
+	}
+
+	#logOut{
+		position: relative;
+	    right: -11%;
+	    float: right;
+		font-size: 1.2vw;
+	}
+
+	.assigned{
+		position: relative;
+		width: 100%;
+		height: 27%;
+		text-align: center;
+		font-size: 1.1vw;
+		background-color: rgba(255, 154, 92, 0.8);
+	}
+
+	.msg-animate {
+   		animation: zoom 0.4s
+	}
+
+	.msg{
+		display: none;
+	    position: fixed;
+	    z-index: 10;
+	    left: 0;
+	    top: 0;
+	    width: 100%;
+	    height: 100%;
+	    overflow: auto;
+	    background-color: rgba(0,0,0,0.4);
+	}
+
+	.msg-content{
+		background-color: #fefefe;
+	    margin: 8% auto 15% auto;
+	    border: 1px solid #888;
+	    width: 50%;
+	    height: 65%;
+	    padding-bottom: 30px;
+	    padding: 20px 20px;
+	}
+
+	.msg-data{
+		background-color: #fefefe;
+	    margin: 2% auto -6% 9%;
+	    width: 86%;
+	    height: 65%;
+	    padding-bottom: 30px;
+	}
+
+	#btnSend{
+		position: absolute;
+	    margin-top: 7.75%;
+	    right: 26%;
+	    float: right;
+	    padding: 5px 5px;
+	    background-color: #00FA9A;
+	    border: 3px solid #00FA9A;
+	    text-align: center;
+	    color: white;
+	    font-size: 1.1vw;
+	    font-weight: bold;
+	    width: 15%;
+	    cursor: pointer;
+	}
+
+	#btnSend:hover {
+		transform: scale(1.04);
+	}
+
+</style>

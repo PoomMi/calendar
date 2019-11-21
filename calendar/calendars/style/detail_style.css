@@ -1,0 +1,65 @@
+.title{
+	margin-top: 2%;
+	text-align: center;
+	font-size: 2.5vw;
+	color: rgba(0,0,0,0.4);
+	font-weight: bold;
+}
+
+.date_time{
+	margin: 1%;
+	text-align: center;
+	font-size: 0.99vw;
+}
+
+.detail_{
+	margin: 4%;
+	width: 89.5%;
+	height: 50%;
+	border: 2px solid rgba(0,0,0,0.3);
+	padding: 1% 1%;
+}
+
+#btnDel{
+	position: relative;
+    margin-top: -2.25%;
+    right: 4%;
+    float: right;
+    padding: 5px 5px;
+    background-color: #00FA9A;
+    border: 3px solid #00FA9A;
+    text-align: center;
+    color: white;
+    font-size: 1.1vw;
+    font-weight: bold;
+    width: 15%;
+    cursor: pointer;
+}
+
+#btnDel:hover {
+	transform: scale(1.04);
+}
+
+.hide_time{
+	font-size: 0vw;
+}
+
+#btnShare{
+	position: relative;
+    margin-top: -2.25%;
+    right: 5%;
+    float: right;
+    padding: 5px 5px;
+    background-color: #00FA9A;
+    border: 3px solid #00FA9A;
+    text-align: center;
+    color: white;
+    font-size: 1.1vw;
+    font-weight: bold;
+    width: 15%;
+    cursor: pointer;
+}
+
+#btnShare:hover {
+	transform: scale(1.04);
+}

@@ -1,0 +1,185 @@
+<style>
+{/*style for index page*/}
+	.body{
+		position: relative;
+		margin: 0 auto;
+		border: 3px solid rgba(85,255,170,1);
+		background-color: rgba(85,255,170,1);
+		border-radius: 10px;
+		width: 99%; height: 99%
+	}
+
+	.animate {
+    	animation: zoom 0.4s
+	}
+	@keyframes zoom {
+    	from {transform: scale(0)} 
+    	to {transform: scale(1)}
+	}
+
+	.head{
+		margin: auto;
+		text-align: center;
+	}
+
+	#icon{	
+		display: none;
+		opacity: 0.5;
+		margin-top: 1%;
+		width: 10%;
+		height: auto;	
+	}
+
+	#myCalendar{
+		display: none;
+		position: relative; 
+		top: -25px;
+		font-family: MV Boli; 
+		color: #FFFF00; 
+		font-style: inherit;
+		font-weight: bolder;
+		font-size: 45px;
+	}
+
+	.middle{
+		position: relative;
+		margin: 0 auto;
+		top: -3%;
+		width: 95%; height: 60%;
+	}
+
+	#line{
+		position: absolute;
+		left: 50%;
+		margin-top: 1.5%;
+		opacity: 0.8;
+		width: 0.7px;
+		height: 90%;
+		border: 1px solid white;
+		background-color: white;
+	}
+
+	input[type=text],input[type=password]{
+	    width: 60%;
+	    padding: 5px 10px;
+	    margin: 8px 26px;
+	    border: 1px solid #ccc;
+	    border-radius: 5px;
+	    box-sizing: border-box;
+		font-size:16px;
+	}
+
+	#regisBox{
+		float: left;
+		margin-top: 2.5%;
+		width: 47%; height: 85%;
+		background-color: rgba(65,0,35,0.2);
+		border-radius: 15px;
+		color: white;
+		font-family: Segoe UI;
+	}
+	#regisBox:hover {
+		transform: scale(1.04);
+	}
+
+	#register{
+		margin: 0% auto; left: -2%;
+		width: 40%;
+		padding: 10px;
+		text-align: center;
+		color: white;
+		font-weight: bold;
+		font-size: 3vw;
+	}
+	
+	.register-content {
+		position: relative;
+	    margin: 0 0 0 10%;
+	    width: 90%; height: auto;
+		padding-bottom: 30px;
+		border-radius : 15px;
+	}
+
+	.btnRegis{
+		position: relative;
+		margin: auto;
+		padding: 5px 5px;
+		background-color: #00FA9A; 
+		border: 3px solid #00FA9A;	   	
+	  	text-align: center;
+	  	color: white;		   	   
+	   	font-size: 1.2vw; 
+	   	font-weight: bold;	
+	   	width: 91%;	 
+	   	cursor: pointer; 
+	}
+
+	.btnRegis:hover {
+		opacity: 0.9;
+		transform: scale(1.02); 
+	}
+
+	#loginBox{
+		float: right;
+		margin-top: 2.5%;
+		width: 47%; height: 85%;
+		background-color: rgba(65,0,35,0.2);
+		border-radius: 15px;
+		color: white;
+		font-family: Segoe UI;
+	}
+
+	#loginBox:hover {
+		transform: scale(1.04);
+	}
+
+	#login{
+		margin: 0% auto; left: -3%;
+		width: 40%;
+		padding: 10px;
+		text-align: center;
+		color: white;
+		font-weight: bold;
+		font-size: 3vw;
+	}
+
+	.login-content {
+		position: relative;
+	    margin: 4% 0 0 15%;
+	    width: 90%; height: auto;
+		padding-bottom: 30px;
+		border-radius : 15px;
+	}
+
+	.btnLogin{
+		position: relative;
+		margin: auto;
+		padding: 5px 5px;
+		background-color: #00FA9A; 
+		border: 3px solid #00FA9A;	   	
+	  	text-align: center;
+	  	color: white;	
+	   	font-size: 1.2vw;  
+	   	font-weight: bold;	
+	   	width: 80%;	 
+	   	cursor: pointer; 	
+	}
+
+	.btnLogin:hover {
+		opacity: 0.9;
+		transform: scale(1.02); 
+	}
+
+	.error{
+
+		margin: 1.5% 0 0 38%;
+		color: red;
+		font-size: 24px;
+	}
+
+	#creator{
+		position: fixed;
+		bottom: 1.5%;
+		right: 2%;
+	}
+</style>
